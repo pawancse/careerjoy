@@ -1,33 +1,61 @@
-<div class="container">
-	<h1>Blog</h1>
-</div>
-<div class="container">
-	<div class="row">
-		<div class="col-sm-8 col-md-9">
-			<h4 class="text-weight-normal">Showing {{ data.posts.results.length}} post.</h4>
-			<div class="blog">
-				{{# each data.posts.results}}
-				<div data-ks-editable="{{#if ../user}}{{adminEditableUrl ../../user _id}}{{/if}}" class="post">
-					<h2><a href="{{postUrl slug}}">{{{title}}}</a></h2>
-					<p class="lead text-muted">{{{categoryList categories prefix="Posted in "}}}
-							{{#if author.name.first}}by {{author.name.first}}{{/if}}
-					</p>
-					{{#if image}}<img src="{{{cloudinaryUrl image width=160 height=160 crop='fit' }}}" class="img pull-right">{{/if}}
-					<p>{{{content.brief}}}</p>
-					{{#if content.extended}}<p class="read-more"><a href="{{postUrl slug}}">Read more...</a></p>{{/if}}
-				</div>
+ <a class="scrollToTop" href="#"></a>
+    <!-- END SCROLL TOP BUTTON -->
+
+    <!--=========== BEGIN HEADER SECTION ================-->
+    <header id="header">
+    <!--=========== BEGIN COURSE BANNER SECTION ================-->
+    <section id="imgBanner">
+      <h2>Blog Archive</h2>
+    </section>
+    <!--=========== END COURSE BANNER SECTION ================-->
+    
+    <!--=========== BEGIN COURSE BANNER SECTION ================-->
+    <section id="courseArchive">
+      <div class="container">
+        <div class="row">
+          <!-- start course content -->
+          <div class="col-lg-8 col-md-8 col-sm-8">
+            <div class="courseArchive_content">
+              <!-- start blog archive  -->
+              <div class="row">
+			  {{# each data.posts.results}}
+                <!-- start single blog archive -->
+                <div class="col-lg-12 col-12 col-sm-12">
+                  <div class="single_blog_archive wow fadeInUp">
+                    <div class="blogimg_container">
+                      <a href="#" class="blog_img">
+					  {{#if image}}<img alt="img" src="{{{cloudinaryUrl image}}}">{{/if}}
+                      </a>
+                    </div>
+                    <h2 class="blog_title"><a href="{{postUrl slug}}">{{{title}}}</a></h2>
+                    <p class="blog_summary">{{{content.brief}}}</p>
+                    {{#if content.extended}}<a class="blog_readmore" href="{{postUrl slug}}">Read More</a>{{/if}}
+                  </div>
+                </div>
 				{{/each}}
-			</div>
-		</div>
-		<div class="col-sm-4 col-md-3">
-			<h2>Categories</h2>
-			<div style="margin-top: 70px;" class="list-group">
-				<a href="/blog" class="active list-group-item">All Categories</a>
+                {{>pagination}}
+            </div>
+          </div>
+		  </div>
+          <!-- End course content -->
+
+          <!-- start course archive sidebar -->
+          <div class="col-lg-4 col-md-4 col-sm-4">
+            <div class="courseArchive_sidebar">
+              <!-- start single sidebar -->
+              <div class="single_sidebar">
+                <h2>Category <span class="fa fa-angle-double-right"></span></h2>
+                <ul>
+				
 				{{# each data.categories }}
-				<a href="{{categoryUrl key}}" class="false list-group-item">{{name}}</a>
-				{{/each}}
-			</div>
-		</div>
-	</div>
-	{{>pagination}}
-</div>
+                  <li><a href="{{categoryUrl key}}">{{name}}</a></li>
+				  {{/each}}
+                </ul>
+              </div>
+              <!-- End single sidebar -->
+            </div>
+          </div>
+          <!-- start course archive sidebar -->
+        </div>
+      </div>
+    </section>

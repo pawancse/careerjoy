@@ -1,21 +1,34 @@
-<div class="container">
-	<div class="row">
-		<div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
-			<article>
-				<p><a href="/blog">&larr; back to the blog</a></p>
-				<hr>
-				<header>
-					<h1>{{data.post.title}}</h1>
-					<h5>
-						{{{categoryList data.post.categories prefix="Posted in "}}}
-						{{#if author.name.first}}by {{author.name.first}}{{/if}}
-					</h5>
-				</header>
-				<div class="post">
-					{{#if data.post.image}}<img src="{{{cloudinaryUrl data.post.image width=750 height=450 crop='fit' }}}" class="img-responsive">{{/if}}
-					{{{data.post.content.extended}}}
-				</div>
-			</article>
-		</div>
-	</div>
-</div>
+<!--=========== BEGIN COURSE BANNER SECTION ================-->
+    <section id="imgBanner">
+      <h2><a href="/blog">&larr; back to the blog</a></h2>
+    </section>
+    <!--=========== END COURSE BANNER SECTION ================-->
+    
+    <!--=========== BEGIN COURSE BANNER SECTION ================-->
+    <section id="courseArchive">
+      <div class="container">
+        <div class="row">
+          <!-- start course content -->
+          <div class="col-lg-8 col-md-8 col-sm-8">
+            <div class="courseArchive_content">
+              <!-- start blog archive  -->
+              <div class="row">
+                <!-- start single blog -->
+                <div class="col-lg-12 col-12 col-sm-12">
+                  <div class="single_blog">
+                    <div class="blogimg_container">
+                      <a href="#" class="blog_img">
+					  {{#if data.post.image}}<img src="{{{cloudinaryUrl data.post.image}}}" alt="img">{{/if}}
+                      </a>
+                    </div>
+                    <h2 class="blog_title">{{data.post.title}}</h2>
+                    <p>{{{data.post.content.extended}}}</p>
+                </div>
+                <!-- End single blog -->                
+              </div>
+              <!-- end blog archive  -->     
+            </div>
+          </div>
+		   </div>
+      </div>
+    </section>
